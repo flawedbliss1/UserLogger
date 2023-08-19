@@ -1,0 +1,91 @@
+#include <iostream>
+#include <string>
+#include <windows.h>
+using namespace std;
+
+
+string username, password, un, pw;
+bool registrado = false;
+void registrar()
+{
+    cin.ignore();
+    cout << "insira seu user para registrar: "; getline(cin, username, '\n');
+    cout << "insira sua senha: "; getline(cin, password, '\n');
+    username == un;
+    username == pw;
+    cout << "conta criada!\n";
+    cout << "\n";
+    registrado = true;
+}
+
+
+void logar()
+{
+    cout << "insira seu username: "; getline(cin, un, '\n');
+    cout << "insira sua senha: "; getline(cin, pw, '\n');
+    cout << "\n";
+}
+
+int main()
+{
+    SetConsoleCP(1252);
+    SetConsoleOutputCP(1252);
+
+    while (true)
+    {
+
+        int choices;
+    escolhas:
+        cout << "Escolha as opções\n";
+        cout << "1. para registrar\n";
+        cout << "2. para logar\n";
+        cout << "\n";
+        cin >> choices;
+        switch (choices)
+        {
+        case 1:
+            registrar();
+            continue;
+        case 2:
+            if (registrado == false)
+            {
+                cout << "você não está registrado!\n";
+                registrar();
+            }
+            else
+            {
+                cin.ignore();
+                logar();
+                if (un == username && pw == password)
+                {
+                    cout << "logado com suceso";
+                    cout << "\n";
+                    return false;
+                }
+                while (un != username && pw != password)
+                {
+                    cout << "usuario e senha incorretos\n";
+                    cout << "\n";
+                    logar();
+                }
+
+                while (un != username)
+                {
+                    cout << "usuario incorreto\n";
+                    cout << "\n";
+                    logar();
+                }
+
+                while (pw != password)
+                {
+                    cout << "senha incorreta\n";
+                    cout << "\n";
+                    logar();
+                }
+
+
+            }
+
+        }
+    }
+}
